@@ -1,0 +1,10 @@
+.card {
+  padding: 8px;
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none;
+}
+.cardbody {
+  background-color: #333;
+  color: #fff;
+}
