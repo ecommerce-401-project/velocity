@@ -31,12 +31,13 @@ export default class Navigation extends React.Component {
       <div>
         <Navbar expand="sm" className="navbar">
           <NavbarBrand href="/" className="nav-link subheading">
+          <img src={logo} className='img-fluid mb-5'/>
+
             {' '}
-            <img src={logo} />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="" navbar>
+            <Nav navbar>
               <NavItem>
                 <NavLink href="/components/" className="subheading">
                   Store
