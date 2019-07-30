@@ -29,7 +29,7 @@ export default class Navigation extends React.Component {
   render() {
     return (
       <div>
-        <Navbar expand="sm" className="navbar">
+        <Navbar expand="sm" className="navbar shadow" dark>
           <NavbarBrand href="/" className="nav-link subheading">
           <img src={logo} className='img-fluid mb-5'/>
 
@@ -50,7 +50,7 @@ export default class Navigation extends React.Component {
               </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
-              <NavItem>
+              <NavItem className="blue">
                 <AuthModal />
               </NavItem>
             </Nav>
