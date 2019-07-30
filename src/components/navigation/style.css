@@ -1,0 +1,11 @@
+.navbar {
+  background-color: #333 !important;
+  color: #fff;
+}
+.nav-link {
+  color: #fff !important;
+  text-decoration: none;
+}
+.uppercase {
+  text-transform: uppercase
+}
