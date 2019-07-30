@@ -14,7 +14,6 @@ function App() {
     <div className="App">
       <Navigation />
       <Header />
-      <AuthModal />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/library" component={UserLibrary} />
