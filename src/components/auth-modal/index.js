@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import SignUp from '../signup';
 import SignIn from '../signin';
 import './style.css';
@@ -30,7 +30,7 @@ class AuthModal extends React.Component {
       <div>
         <Button className="dark-button subheading" onClick={this.toggle}>
           {/* {this.props.buttonLabel} */}
-        Sign in
+          Sign in
         </Button>
         <Modal
           isOpen={this.state.modal}
