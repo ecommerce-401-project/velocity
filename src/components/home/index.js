@@ -9,6 +9,7 @@ import {
   CardSubtitle,
   Container,
   Row,
+  Button,
 } from 'reactstrap';
 import './style.css';
 
@@ -16,6 +17,10 @@ class Home extends React.Component {
   componentDidMount = () => {
     this.props.getGames();
   };
+
+  handleSave = (data) => {
+    this.props.saveGame(data, this.props.user.token)
+  }
 
   render() {
     return (
@@ -29,6 +34,7 @@ class Home extends React.Component {
                 <CardSubtitle className="text-left subtitle">
                   {data.creator}
                 </CardSubtitle>
+                <Button onClick={() => this.handleSave(data)}>Save to Library</Button>
               </CardBody>
             </Card>
           ))}
@@ -40,10 +46,12 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({
   games: state.games,
+  user: state.currentUser,
 });
 
 const mapDispatchToProps = dispatch => ({
   getGames: () => dispatch(actions.getAllGames()),
+  saveGame: (data, token) => dispatch(actions.saveGame(data, token)),
 });
 
 export default connect(
