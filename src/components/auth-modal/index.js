@@ -28,10 +28,10 @@ class AuthModal extends React.Component {
   render() {
     return (
       <div>
-        <Button className="dark-button subheading" onClick={this.toggle}>
+        <div className="subheading nav-link pointer" onClick={this.toggle}>
           {/* {this.props.buttonLabel} */}
           Sign in
-        </Button>
+        </div>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
