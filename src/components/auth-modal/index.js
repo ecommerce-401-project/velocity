@@ -29,7 +29,6 @@ class AuthModal extends React.Component {
     return (
       <div>
         <div className="subheading nav-link pointer" onClick={this.toggle}>
-          {/* {this.props.buttonLabel} */}
           Sign in
         </div>
         <Modal
@@ -38,8 +37,15 @@ class AuthModal extends React.Component {
           className={this.props.className}
         >
           <ModalBody>{this.state.switch ? <SignUp /> : <SignIn />}</ModalBody>
-          <button onClick={this.toggleSwitch}>Already a user? sign-in</button>
 
+          <p className="small text-center" onClick={this.toggleSwitch}>
+            {' '}
+            {this.state.switch ? (
+              <p>Already a user? Sign in.</p>
+            ) : (
+              <p>Not Registered? Sign up!</p>
+            )}
+          </p>
           <ModalFooter>
             <Button className="dark-button" onClick={this.toggle}>
               Cancel
