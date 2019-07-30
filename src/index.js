@@ -7,6 +7,9 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+import * as actions from '../src/redux/actions/user-actions';
+
+store.dispatch(actions.tokenFromCookie());
 
 ReactDOM.render(
   <Provider store={store}>

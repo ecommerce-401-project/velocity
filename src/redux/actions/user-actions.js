@@ -1,7 +1,21 @@
-import cookie from 'react-cookies';
 import superagent from 'superagent';
 
 let API = 'https://videogame-marketplace.herokuapp.com';
+
+export const TOKEN_SET = 'TOKEN_SET';
+export const tokenSet = token => ({
+  type: TOKEN_SET,
+  payload: token,
+});
+
+export const TOKEN_FROM_COOKIE = 'TOKEN_FROM_COOKIE';
+export const tokenFromCookie = () => ({
+  type: TOKEN_FROM_COOKIE,
+});
+export const TOKEN_DESTROY = 'TOKEN_DESTROY';
+export const tokenDestroy = () => ({
+  type: TOKEN_DESTROY,
+});
 
 export const userSignUp = userInfo => {
   return dispatch => {
@@ -9,7 +23,7 @@ export const userSignUp = userInfo => {
       .post(`${API}/signup`)
       .send(userInfo)
       .then(res => {
-        cookie.save('token', res.headers.token);
+        dispatch(tokenSet(res.headers.token));
         dispatch(
           signUpUser({
             ...res.body,
@@ -32,8 +46,7 @@ export const userSignIn = (username, password) => {
       .post(`${API}/signin`)
       .auth(username, password)
       .then(res => {
-        cookie.save('token', res.headers.token);
-        console.log(res.headers.token);
+        dispatch(tokenSet(res.headers.token));
         dispatch(
           loginUser({
             ...res.body,
