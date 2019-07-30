@@ -29,6 +29,7 @@ class Home extends React.Component {
                 <CardSubtitle className="text-left">
                   {data.creator}
                 </CardSubtitle>
+                <button>Save to My Library</button>
               </CardBody>
             </Card>
           ))}
