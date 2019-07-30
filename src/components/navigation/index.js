@@ -8,11 +8,8 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from 'reactstrap';
+import './style.css';
 
 export default class Navigation extends React.Component {
   constructor(props) {
@@ -31,16 +28,23 @@ export default class Navigation extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="sm">
-          <NavbarBrand href="/">VELOCITY</NavbarBrand>
+        <Navbar expand="sm" className="navbar">
+          <NavbarBrand href="/" className="nav-link subheading">
+            {' '}
+            VELOCITY
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="" navbar>
               <NavItem>
-                <NavLink href="/components/">Store</NavLink>
+                <NavLink href="/components/" className="subheading">
+                  Store
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/library">Library</NavLink>
+                <NavLink href="/library" className="subheading">
+                  Library
+                </NavLink>
               </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
