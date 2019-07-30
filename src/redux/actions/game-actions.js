@@ -1,7 +1,5 @@
 import superagent from 'superagent';
 
-let API = 'https://videogame-marketplace.herokuapp.com';
-
 export const getAllGames = () => {
   return dispatch => {
     superagent
