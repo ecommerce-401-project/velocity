@@ -6,6 +6,7 @@ import Navigation from './components/navigation/';
 import Home from './components/home/';
 import AuthModal from './components/auth-modal';
 
+
 function App() {
   return (
     <div className="App">
