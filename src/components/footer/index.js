@@ -6,7 +6,12 @@ const Footer = () => {
   return (
     <footer>
       <Container className="footer-body">
-        <Row>Footer</Row>
+        <Row>
+          <Col className="text-center">
+            <p className="small">VELOCITY</p>
+            <hr />
+          </Col>
+        </Row>
         <Row>
           <Col>Col 1</Col>
           <Col>Col 2</Col>
