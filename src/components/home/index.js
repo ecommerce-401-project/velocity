@@ -23,7 +23,7 @@ class Home extends React.Component {
         <Row>
           {this.props.games.map(data => (
             <Card className="col-lg-6 card">
-              <CardImg src="https://steamcdn-a.akamaihd.net/steam/apps/271590/header.jpg?t=1563930957" />
+              <CardImg src={data.imageURL} />
               <CardBody className="cardbody">
                 <CardTitle className="text-left">{data.name} </CardTitle>
                 <CardSubtitle className="text-left">
