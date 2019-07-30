@@ -1,11 +1,12 @@
 import React from 'react';
 
 import './style.css';
+import Featured from '../featured';
 
 const Header = () => {
   return (
     <div class="header">
-      <h1>Hello, world!</h1>
+      <Featured />
     </div>
   );
 };

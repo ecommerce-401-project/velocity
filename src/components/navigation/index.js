@@ -1,5 +1,6 @@
 import React from 'react';
 import AuthModal from '../auth-modal';
+import logo from './logoVe.png'
 import {
   Collapse,
   Navbar,
