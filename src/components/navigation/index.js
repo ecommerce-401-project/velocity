@@ -1,4 +1,5 @@
 import React from 'react';
+import AuthModal from '../auth-modal';
 import {
   Collapse,
   Navbar,
@@ -44,7 +45,7 @@ export default class Navigation extends React.Component {
             </Nav>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Sign In</NavLink>
+                <AuthModal />
               </NavItem>
             </Nav>
           </Collapse>
