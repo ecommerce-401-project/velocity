@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
 import SignUp from '../signup';
 import SignIn from '../signin';
+import './style.css';
 
 class AuthModal extends React.Component {
   constructor(props) {
@@ -20,31 +20,28 @@ class AuthModal extends React.Component {
       modal: !prevState.modal,
     }));
   }
-    toggleSwitch = () => {
-      this.setState(prevState => ({
-        switch: !prevState.switch,
-      }));
-    }
+  toggleSwitch = () => {
+    this.setState(prevState => ({
+      switch: !prevState.switch,
+    }));
+  };
   render() {
     return (
       <div>
-        <Button color="danger" onClick={this.toggle}>
+        <Button className="dark-button subheading" onClick={this.toggle}>
           {/* {this.props.buttonLabel} */}
-          SignUp
+        Sign in
         </Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>Sign In</ModalHeader>
           <ModalBody>{this.state.switch ? <SignUp /> : <SignIn />}</ModalBody>
-          <Button color="success" onClick={this.toggleSwitch}>
-            Already a user? sign-in
-          </Button>
+          <button onClick={this.toggleSwitch}>Already a user? sign-in</button>
 
           <ModalFooter>
-            <Button color="secondary" onClick={this.toggle}>
+            <Button className="dark-button" onClick={this.toggle}>
               Cancel
             </Button>
           </ModalFooter>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/user-actions';
+import { Form, FormGroup, Input, Label } from 'reactstrap';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -31,35 +32,35 @@ class SignUp extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <h1>Sign Up For An Account</h1>
+        <Form onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <h1 class="large">Register</h1>
+            <Label>Username</Label>
+            <Input
+              name="username"
+              placeholder="Username"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+            <br />
 
-          <label>Username</label>
-          <input
-            name="username"
-            placeholder="Username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-          <br />
+            <Label>Password</Label>
+            <Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+            <br />
 
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <br />
-
-          <input type="submit" />
-        </form>
+            <Input type="submit" className="dark-button" />
+          </FormGroup>
+        </Form>
       </div>
     );
   }
 }
-
 const mapDispatchToProps = dispatch => ({
   userSignUp: userInfo => dispatch(actions.userSignUp(userInfo)),
 });
