@@ -22,11 +22,11 @@ class Home extends React.Component {
       <Container>
         <Row>
           {this.props.games.map(data => (
-            <Card className="col-lg-6 card">
-              <CardImg src={data.imageURL} />
+            <Card className="col-lg-6 card" key={data._id}>
+              <CardImg src={data.imageURL} className="img-fluid" />
               <CardBody className="cardbody">
-                <CardTitle className="text-left">{data.name} </CardTitle>
-                <CardSubtitle className="text-left">
+                <CardTitle className="text-left medium">{data.name} </CardTitle>
+                <CardSubtitle className="text-left subtitle">
                   {data.creator}
                 </CardSubtitle>
               </CardBody>
