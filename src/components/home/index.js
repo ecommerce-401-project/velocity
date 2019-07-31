@@ -23,23 +23,12 @@ class Home extends React.Component {
 
   handleSave = (data) => {
     this.props.saveGame(data, this.props.user.token);
-    this.checkForSaved()
-  }
-
-  checkForSaved = () => {
-    this.props.checkGames(this.props.user.token);
   }
 
   savedCheck = (data) => {
-    let set = new Set();
-    this.props.savedGames.forEach(game => {
-      set.add(game._id)
+    return this.props.savedGames.some(game => {
+      return game._id === data._id;
     });
-    if(!set.has(data._id)) {
-      return false;
-    } else {
-      return true;
-    }
   }
 
   render() {
@@ -48,22 +37,25 @@ class Home extends React.Component {
         <Featured />
         <Container>
           <Row>
-            {this.props.games.map(data => (
-              <Card className="col-lg-6 card" key={data._id}>
-                <CardImg src={data.imageURL} className="img-fluid" />
-                <CardBody className="cardbody">
-                  <Link to={`/game/${data._id}`} className="a">
-                    <CardTitle className="text-left medium">
-                      {data.name}{' '}
-                    </CardTitle>
-                  </Link>
-                  <CardSubtitle className="text-left subtitle">
-                    {data.creator}
-                  </CardSubtitle>
-                  <Button onClick={() => this.handleSave(data)}  disabled={this.savedCheck(data)}>{this.savedCheck(data) ? 'Added to Wishlist' : 'Save to Wishlist'}</Button>
-                </CardBody>
-              </Card>
-            ))}
+            {this.props.games.map(data => {
+              const isSaved = this.savedCheck(data);
+              return (
+                <Card className="col-lg-6 card" key={data._id}>
+                  <CardImg src={data.imageURL} className="img-fluid" />
+                  <CardBody className="cardbody">
+                    <Link to={`/game/${data._id}`} className="a">
+                      <CardTitle className="text-left medium">
+                        {data.name}{' '}
+                      </CardTitle>
+                    </Link>
+                    <CardSubtitle className="text-left subtitle">
+                      {data.creator}
+                    </CardSubtitle>
+                    <Button onClick={() => this.handleSave(data)}  disabled={isSaved}>{isSaved ? 'Added to Wishlist' : 'Save to Wishlist'}</Button>
+                  </CardBody>
+                </Card>
+              );
+            })}
           </Row>
         </Container>
        </div>

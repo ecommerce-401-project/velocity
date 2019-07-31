@@ -26,6 +26,7 @@ export const saveGame = (data, token) => {
       .set('Authorization', `Bearer ${token}`)
       .then(res => {
         console.log('WORKED')
+        dispatch(checkSavedGames(token));
       })
       .catch(err => console.error(err));
   };
