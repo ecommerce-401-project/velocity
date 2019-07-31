@@ -32,13 +32,13 @@ class Navigation extends React.Component {
     });
   }
   render() {
-   const loggedIn = this.props.currentUser.token ;
+    const loggedIn = this.props.currentUser.token;
 
     return (
       <div>
         <Navbar expand="sm" className="navbar shadow" dark>
           <NavbarBrand href="/" className="nav-link subheading">
-          <img src={logo} className='img-fluid mb-5'/>
+            <img src={logo} className='img-fluid mb-5' />
 
             {' '}
           </NavbarBrand>
@@ -58,12 +58,11 @@ class Navigation extends React.Component {
             </Nav>
             <Nav className="ml-auto" navbar>
               <NavItem >
-                { loggedIn? <Button onClick={()=>this.props.signOut()}>Sign Out</Button> : <AuthModal />}
-
+                {loggedIn ? <div className="subheading nav-link pointer" onClick={()=> this.props.signOut()}>Sign Out</div> : <AuthModal />}
               </NavItem>
             </Nav>
           </Collapse>
-       </Navbar> 
+        </Navbar>
       </div>
     );
   }
