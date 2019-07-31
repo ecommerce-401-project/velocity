@@ -43,7 +43,7 @@ class Home extends React.Component {
                 <Card className="col-lg-6 card" key={data._id}>
                   <CardImg src={data.imageURL} className="img-fluid" />
                   <CardBody className="cardbody">
-                    <Link to={`/game/${data._id}`}>
+                    <Link to={`/game/${data._id}`} className="a">
                       <CardTitle className="text-left medium">
                         {data.name}{' '}
                       </CardTitle>
