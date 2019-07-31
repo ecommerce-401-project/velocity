@@ -12,15 +12,16 @@ import {
   Button,
 } from 'reactstrap';
 import './style.css';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
   componentDidMount = () => {
     this.props.getGames();
   };
 
-  handleSave = (data) => {
-    this.props.saveGame(data, this.props.user.token)
-  }
+  handleSave = data => {
+    this.props.saveGame(data, this.props.user.token);
+  };
 
   render() {
     return (
@@ -30,11 +31,18 @@ class Home extends React.Component {
             <Card className="col-lg-6 card" key={data._id}>
               <CardImg src={data.imageURL} className="img-fluid" />
               <CardBody className="cardbody">
-                <CardTitle className="text-left medium">{data.name} </CardTitle>
+                <Link to={`/game/${data._id}`}>
+                  <CardTitle className="text-left medium">
+                    {data.name}{' '}
+                  </CardTitle>
+                </Link>
                 <CardSubtitle className="text-left subtitle">
                   {data.creator}
                 </CardSubtitle>
-                <Button onClick={() => this.handleSave(data)}>Save to Library</Button>
+
+                <Button onClick={() => this.handleSave(data)}>
+                  Save to Library
+                </Button>
               </CardBody>
             </Card>
           ))}
