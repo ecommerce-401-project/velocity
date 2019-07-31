@@ -10,18 +10,18 @@ import {
 const items = [
   {
     src: 'https://www.wallpapermaiden.com/image/2016/07/16/dishonored-2-mask-coat-female-games-2810.jpg',
-    altText: 'Slide 1',
-    caption: 'Slide 1'
+    altText: '',
+    caption: 'Dishonored 2'
   },
   {
     src: 'https://cdn.wallpapersafari.com/12/4/8erRgb.jpg',
-    altText: 'Slide 2',
-    caption: 'Slide 2'
+    altText: '',
+    caption: 'Battlefront'
   },
   {
     src: 'https://i.pinimg.com/originals/22/60/3b/22603b6adec15eef47760c9c1bbfb47a.jpg',
-    altText: 'Slide 3',
-    caption: 'Slide 3'
+    altText: '',
+    caption: 'Battlefield V'
   }
 ];
 
