@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthModal from '../auth-modal';
-import logo from './logoVe.png'
+import logo from './logo.png'
 import {
   Collapse,
   Navbar,
@@ -29,14 +29,15 @@ export default class Navigation extends React.Component {
   render() {
     return (
       <div>
-        <Navbar expand="sm" className="navbar">
+        <Navbar expand="sm" className="navbar shadow" dark>
           <NavbarBrand href="/" className="nav-link subheading">
+          <img src={logo} className='img-fluid mb-5'/>
+
             {' '}
-            VELOCITY
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="" navbar>
+            <Nav navbar>
               <NavItem>
                 <NavLink href="/components/" className="subheading">
                   Store
@@ -49,7 +50,7 @@ export default class Navigation extends React.Component {
               </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
-              <NavItem>
+              <NavItem className="blue">
                 <AuthModal />
               </NavItem>
             </Nav>

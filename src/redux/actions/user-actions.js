@@ -1,4 +1,3 @@
-import cookie from 'react-cookies';
 import superagent from 'superagent';
 
 let API = 'https://videogame-marketplace.herokuapp.com';
@@ -9,7 +8,6 @@ export const userSignUp = userInfo => {
       .post(`${API}/signup`)
       .send(userInfo)
       .then(res => {
-        cookie.save('token', res.headers.token);
         dispatch(
           signUpUser({
             ...res.body,
@@ -32,8 +30,6 @@ export const userSignIn = (username, password) => {
       .post(`${API}/signin`)
       .auth(username, password)
       .then(res => {
-        cookie.save('token', res.headers.token);
-        console.log(res.headers.token);
         dispatch(
           loginUser({
             ...res.body,
@@ -45,7 +41,13 @@ export const userSignIn = (username, password) => {
   };
 };
 
-const loginUser = userOBj => ({
+export const loginUser = userOBj => ({
   type: 'SIGNIN_USER',
   payload: userOBj,
+});
+
+export const TOKEN_FROM_COOKIE = 'TOKEN_FROM_COOKIE';
+
+export const tokenFromCookie = () => ({
+  type: TOKEN_FROM_COOKIE,
 });
