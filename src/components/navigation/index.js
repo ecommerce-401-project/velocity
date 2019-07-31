@@ -46,13 +46,18 @@ class Navigation extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/components/" className="subheading">
+                <NavLink href="/" className="subheading">
                   Store
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/library" className="subheading">
-                  Library
+                  Wishlist
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/about" className="subheading">
+                  About
                 </NavLink>
               </NavItem>
             </Nav>

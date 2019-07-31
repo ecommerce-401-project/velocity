@@ -25,15 +25,30 @@ export const saveGame = (data, token) => {
       )
       .set('Authorization', `Bearer ${token}`)
       .then(res => {
-        dispatch(save(res.body.results));
+        console.log('WORKED')
+        dispatch(checkSavedGames(token));
       })
       .catch(err => console.error(err));
   };
 };
 
-const save = games => ({
-  type: 'GET_ALL_GAMES',
+
+export const checkSavedGames = (token) => {
+  return dispatch => {
+    superagent
+      .get(`https://videogame-marketplace.herokuapp.com/library`)
+      .set('Authorization', `Bearer ${token}`)
+      .then(res => {
+        dispatch(checkAll(res.body));
+      })
+      .catch(err => console.error(err));
+  };
+};
+
+const checkAll = games => ({
+  type: 'GET_SAVED_GAMES',
   payload: games,
+
 });
 
 export const gameById = id => {
