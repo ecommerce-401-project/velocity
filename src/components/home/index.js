@@ -18,11 +18,29 @@ import { Link } from 'react-router-dom';
 class Home extends React.Component {
   componentDidMount = () => {
     this.props.getGames();
+    this.props.checkGames(this.props.user.token);
   };
 
-  handleSave = data => {
+  handleSave = (data) => {
     this.props.saveGame(data, this.props.user.token);
-  };
+    this.checkForSaved()
+  }
+
+  checkForSaved = () => {
+    this.props.checkGames(this.props.user.token);
+  }
+
+  savedCheck = (data) => {
+    let set = new Set();
+    this.props.savedGames.forEach(game => {
+      set.add(game._id)
+    });
+    if(!set.has(data._id)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   render() {
     return (
@@ -42,16 +60,13 @@ class Home extends React.Component {
                   <CardSubtitle className="text-left subtitle">
                     {data.creator}
                   </CardSubtitle>
-
-                  <Button onClick={() => this.handleSave(data)}>
-                    Save to Library
-                  </Button>
+                  <Button onClick={() => this.handleSave(data)}  disabled={this.savedCheck(data)}>{this.savedCheck(data) ? 'Added to Wishlist' : 'Save to Wishlist'}</Button>
                 </CardBody>
               </Card>
             ))}
           </Row>
         </Container>
-      </div>
+       </div>
     );
   }
 }
@@ -59,11 +74,13 @@ class Home extends React.Component {
 const mapStateToProps = state => ({
   games: state.games,
   user: state.currentUser,
+  savedGames: state.savedGames,
 });
 
 const mapDispatchToProps = dispatch => ({
   getGames: () => dispatch(actions.getAllGames()),
   saveGame: (data, token) => dispatch(actions.saveGame(data, token)),
+  checkGames: (token) => dispatch(actions.checkSavedGames(token))
 });
 
 export default connect(
