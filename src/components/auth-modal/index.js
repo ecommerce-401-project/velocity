@@ -38,14 +38,14 @@ class AuthModal extends React.Component {
         >
           <ModalBody>{this.state.switch ? <SignUp /> : <SignIn />}</ModalBody>
 
-          <p className="small text-center" onClick={this.toggleSwitch}>
+          <div className="small text-center" onClick={this.toggleSwitch}>
             {' '}
             {this.state.switch ? (
               <p>Already a user? Sign in.</p>
             ) : (
               <p>Not Registered? Sign up!</p>
             )}
-          </p>
+          </div>
           <ModalFooter>
             <Button className="dark-button" onClick={this.toggle}>
               Cancel
