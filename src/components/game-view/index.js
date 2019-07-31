@@ -2,7 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/game-actions';
 import './style.css';
-import { Container, Row, Button, Card, CardImg, CardBody } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Button,
+  Card,
+  CardImg,
+  CardBody,
+  Col,
+} from 'reactstrap';
 
 class GameView extends React.Component {
   componentDidMount = () => {
@@ -14,14 +22,16 @@ class GameView extends React.Component {
     return (
       <div>
         <Container className="text-left padding20">
-          <Card>
-            <CardImg src={this.props.gameView.imageURL} />
-            <CardBody>
-              <h1 className="large"> {this.props.gameView.name}</h1>
-              <h2 className="medium">{this.props.gameView.creator} </h2>
-              {this.props.gameView.description}
-            </CardBody>
-          </Card>
+          <Col className="col-lg-12 col-sm-12">
+            <Card className="card">
+              <CardImg src={this.props.gameView.imageURL} />
+              <CardBody>
+                <h1 className="large"> {this.props.gameView.name}</h1>
+                <h2 className="medium">{this.props.gameView.creator} </h2>
+                {this.props.gameView.description}
+              </CardBody>
+            </Card>
+          </Col>
         </Container>
       </div>
     );
