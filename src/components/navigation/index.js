@@ -45,7 +45,7 @@ export default class Navigation extends React.Component {
               </NavItem>
               <NavItem>
                 <NavLink href="/library" className="subheading">
-                  Library
+                  Wishlist
                 </NavLink>
               </NavItem>
               <NavItem>
