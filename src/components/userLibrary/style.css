@@ -1,0 +1,21 @@
+.card {
+  padding: 8px;
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none;
+}
+.cardbody {
+  background-color: #333;
+  color: #fff;
+}
+.cardbody:hover {
+  background-color: #444;
+  color: #fff;
+}
+.a {
+  color: #fff;
+}
+.a:hover {
+  color: #777;
+  text-decoration: none;
+}
