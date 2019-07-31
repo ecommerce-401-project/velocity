@@ -7,6 +7,7 @@ export default function user(state = initialState, action) {
     case 'SIGNIN_USER':
       return action.payload;
     case 'LOGOUT_USER':
+    console.log("L-10", "logout user works")
       return initialState;
     default:
       return state;

@@ -1,6 +1,10 @@
 import React from 'react';
 import AuthModal from '../auth-modal';
 import logo from './logo.png'
+import * as actions from '../../redux/actions/user-actions';
+
+import { connect } from 'react-redux';
+
 import {
   Collapse,
   Navbar,
@@ -9,10 +13,11 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Button
 } from 'reactstrap';
 import './style.css';
 
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
   constructor(props) {
     super(props);
 
@@ -27,6 +32,8 @@ export default class Navigation extends React.Component {
     });
   }
   render() {
+   const loggedIn = this.props.currentUser.token ;
+
     return (
       <div>
         <Navbar expand="sm" className="navbar shadow" dark>
@@ -55,13 +62,29 @@ export default class Navigation extends React.Component {
               </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
-              <NavItem className="blue">
-                <AuthModal />
+              <NavItem >
+                { loggedIn? <Button onClick={()=>this.props.signOut()}>Sign Out</Button> : <AuthModal />}
+
               </NavItem>
             </Nav>
           </Collapse>
-        </Navbar>
+       </Navbar> 
       </div>
     );
   }
 }
+const mapDispatchToProps = dispatch => ({
+  signOut: () => dispatch(actions.userSignOut()),
+});
+const mapStateToProps = state => ({
+  games: state.games,
+  currentUser: state.currentUser,
+
+});
+
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Navigation);

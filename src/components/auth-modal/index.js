@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import SignUp from '../signup';
 import SignIn from '../signin';
+import { connect } from 'react-redux';
+
 import './style.css';
 
 class AuthModal extends React.Component {
@@ -26,10 +28,11 @@ class AuthModal extends React.Component {
     }));
   };
   render() {
+ 
     return (
       <div>
         <div className="subheading nav-link pointer" onClick={this.toggle}>
-          Sign in
+         Sign in
         </div>
         <Modal
           isOpen={this.state.modal}
@@ -59,5 +62,15 @@ class AuthModal extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  games: state.games,
+  currentUser: state.currentUser,
 
-export default AuthModal;
+});
+
+
+
+export default connect(
+  mapStateToProps,
+  null,
+)(AuthModal);
