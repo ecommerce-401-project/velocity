@@ -51,3 +51,25 @@ export const TOKEN_FROM_COOKIE = 'TOKEN_FROM_COOKIE';
 export const tokenFromCookie = () => ({
   type: TOKEN_FROM_COOKIE,
 });
+
+// export const userSignOut = userInfo => {
+//   return dispatch => {
+//     // superagent
+//       // .post(`${API}/signup`)
+//       // .send(userInfo)
+//       // .then(res => {
+//         dispatch(
+//           signOut({
+//             // ...res.body,
+//             token: userInfo,
+//           })
+//         )
+//       // })
+//       .catch(err => console.error(err));
+//   };
+// };
+
+export const userSignOut = token => ({
+  type: 'LOGOUT_USER',
+  payload: token,
+});

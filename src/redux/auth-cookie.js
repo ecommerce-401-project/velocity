@@ -12,7 +12,7 @@ export default store => next => action => {
       break;
 
     case 'LOGOUT_USER':
-      cookies.remove(COOKIE_NAME);
+      cookies.remove(COOKIE_NAME,action.payload);
       break;
 
     case actions.TOKEN_FROM_COOKIE:
