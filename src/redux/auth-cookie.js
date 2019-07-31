@@ -1,24 +1,29 @@
-import cookie from 'react-cookies';
+import Cookies from 'universal-cookie';
 import * as actions from './actions/user-actions';
+const cookies = new Cookies();
 
-export const COOKIE_NAME = 'auth';
-
-// const cookie = save.Cookie();
+const COOKIE_NAME = 'auth';
 
 export default store => next => action => {
   switch (action.type) {
-    case actions.TOKEN_SET:
-      cookie.save(COOKIE_NAME, action.payload, { path: '/' });
+    case 'SIGNUP_USER':
+    case 'SIGNIN_USER':
+      cookies.set(COOKIE_NAME, action.payload.token);
       break;
 
-    case actions.TOKEN_DESTROY:
-      cookie.remove(COOKIE_NAME, { path: '/' });
+    case 'LOGOUT_USER':
+      cookies.remove(COOKIE_NAME);
       break;
 
     case actions.TOKEN_FROM_COOKIE:
-      var token = cookie.load(COOKIE_NAME);
+      var token = cookies.get(COOKIE_NAME);
       if (token) {
-        return next(actions.tokenSet(token));
+        return next(
+          actions.loginUser({
+            // Note: username is not available. Do we need it?
+            token,
+          })
+        );
       }
       break;
 
