@@ -9,7 +9,7 @@ const Footer = () => {
       <Container className="footer-body">
         <Row>
           <Col className="text-center">
-            <img src={logo} className='img-fluid mb-1'/>
+            <img src={logo}/>
             <hr />
           </Col>
         </Row>
