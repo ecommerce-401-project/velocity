@@ -36,7 +36,7 @@ export const checkSavedGames = (token) => {
       .get(`https://videogame-marketplace.herokuapp.com/library`)
       .set('Authorization', `Bearer ${token}`)
       .then(res => {
-        dispatch(checkAll(res.body.results));
+        dispatch(checkAll(res.body));
       })
       .catch(err => console.error(err));
   };

@@ -28,6 +28,18 @@ class Home extends React.Component {
     this.props.checkGames(this.props.user.token);
   }
 
+  savedCheck = (data) => {
+    let set = new Set();
+    this.props.savedGames.forEach(game => {
+      set.add(game._id)
+    });
+    if(!set.has(data._id)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   render() {
     return (
       <Container>
@@ -40,7 +52,7 @@ class Home extends React.Component {
                 <CardSubtitle className="text-left subtitle">
                   {data.creator}
                 </CardSubtitle>
-                <Button onClick={() => this.handleSave(data)}>Save to Library</Button>
+                <Button onClick={() => this.handleSave(data)}  disabled={this.savedCheck(data)}>{this.savedCheck(data) ? 'Added to Wishlist' : 'Save to Wishlist'}</Button>
               </CardBody>
             </Card>
           ))}
@@ -53,6 +65,7 @@ class Home extends React.Component {
 const mapStateToProps = state => ({
   games: state.games,
   user: state.currentUser,
+  savedGames: state.savedGames,
 });
 
 const mapDispatchToProps = dispatch => ({
