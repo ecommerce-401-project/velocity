@@ -7,19 +7,11 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
       username: '',
       password: '',
     };
-
-    this.toggle = this.toggle.bind(this);
   }
 
-  toggle() {
-    this.setState(prevState => ({
-      modal: !prevState.modal,
-    }));
-  }
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -54,7 +46,11 @@ class SignUp extends React.Component {
             />
             <br />
 
-            <Input type="submit" className="dark-button" />
+            <Input
+              type="submit"
+              className="dark-button"
+              onClick={this.props.toggle}
+            />
           </FormGroup>
         </Form>
       </div>

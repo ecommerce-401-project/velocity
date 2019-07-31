@@ -36,14 +36,17 @@ class AuthModal extends React.Component {
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalBody>{this.state.switch ? <SignUp /> : <SignIn />}</ModalBody>
+          <ModalBody>{this.state.switch ? <SignIn toggle={this.toggle}/> : <SignUp toggle={this.toggle}/>}</ModalBody>
 
-          <div className="small text-center" onClick={this.toggleSwitch}>
+          <div
+            className="small text-center pointer"
+            onClick={this.toggleSwitch}
+          >
             {' '}
             {this.state.switch ? (
-              <p>Already a user? Sign in.</p>
-            ) : (
               <p>Not Registered? Sign up!</p>
+            ) : (
+              <p>Already a user? Sign in.</p>
             )}
           </div>
           <ModalFooter>
