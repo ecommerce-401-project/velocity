@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import SignUp from '../signup';
 import SignIn from '../signin';
+// import {Button} from reactstrap;
 import { connect } from 'react-redux';
 
 import './style.css';
