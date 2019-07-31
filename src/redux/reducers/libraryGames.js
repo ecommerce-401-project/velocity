@@ -1,8 +1,8 @@
 const initialState = []
 
-export default function games(state = initialState, action) {
+export default function savedGames(state = initialState, action) {
     switch (action.type) {
-      case 'GET_ALL_GAMES':
+      case 'GET_SAVED_GAMES':
         return action.payload;
       default:
         return state;
