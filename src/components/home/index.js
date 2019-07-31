@@ -16,10 +16,16 @@ import './style.css';
 class Home extends React.Component {
   componentDidMount = () => {
     this.props.getGames();
+    this.props.checkGames(this.props.user.token);
   };
 
   handleSave = (data) => {
-    this.props.saveGame(data, this.props.user.token)
+    this.props.saveGame(data, this.props.user.token);
+    this.checkForSaved()
+  }
+
+  checkForSaved = () => {
+    this.props.checkGames(this.props.user.token);
   }
 
   render() {
@@ -52,6 +58,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getGames: () => dispatch(actions.getAllGames()),
   saveGame: (data, token) => dispatch(actions.saveGame(data, token)),
+  checkGames: (token) => dispatch(actions.checkSavedGames(token))
 });
 
 export default connect(
