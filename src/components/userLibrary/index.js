@@ -15,31 +15,26 @@ import {
 import './style.css';
 import { Link } from 'react-router-dom';
 
-
 class UserLibrary extends React.Component {
-
   componentDidMount = () => {
     this.props.checkGames(this.props.user.token);
   };
 
-  componentDidUpdate = () => {
-    this.props.checkGames(this.props.user.token);
-  };
 
-  savedCheck = (data) => {
+  savedCheck = data => {
     return this.props.savedGames.some(game => {
       return game._id === data._id;
     });
-  }
+  };
 
-  handleDelete = (data) => {
-    this.props.deleteGame(data, this.props.user.token)
-  }
+  handleDelete = data => {
+    this.props.deleteGame(data, this.props.user.token);
+  };
 
   render() {
     return (
       <div>
-        <Container>
+        <Container className="paddingTop">
           <Row>
             {this.props.savedGames.map(data => {
               return (
@@ -54,14 +49,16 @@ class UserLibrary extends React.Component {
                     <CardSubtitle className="text-left subtitle">
                       {data.creator}
                     </CardSubtitle>
-                    <Button onClick={() => this.handleDelete(data)}>Delete from library</Button>
+                    <Button onClick={() => this.handleDelete(data)}>
+                      Delete from library
+                    </Button>
                   </CardBody>
                 </Card>
               );
             })}
           </Row>
         </Container>
-       </div>
+      </div>
     );
   }
 }
@@ -73,8 +70,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getGames: () => dispatch(actions.getAllGames()),
-  checkGames: (token) => dispatch(actions.checkSavedGames(token)),
-  deleteGame: (data, token) => dispatch(actions.deleteSavedGame(data, token))
+  checkGames: token => dispatch(actions.checkSavedGames(token)),
+  deleteGame: (data, token) => dispatch(actions.deleteSavedGame(data, token)),
 });
 
 export default connect(

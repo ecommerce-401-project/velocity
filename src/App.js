@@ -20,7 +20,6 @@ function App() {
         <Route path="/game/:gameId" component={GameView} />
         <Route path="/about" component={About} />
       </Switch>
-      <Twitch />
       <Footer />
     </div>
   );
