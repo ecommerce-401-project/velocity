@@ -1,4 +1,8 @@
 .twitch {
-  background-color: #fff; 
-  height: 300px; 
+  background-color: #888;
+
+  color: #333;
+}
+.video {
+  margin: 5px;
 }

@@ -1,17 +1,17 @@
 .header {
   background-color: #333;
-  padding-top: 76px;
+  padding-top: 55px;
 }
 .welcome {
-  background-color: #1f2042;
+  background-color: rgb(85, 120, 126);
   color: #fff;
-  padding: 100px 300px 30px 300px;
   min-height: 500px;
+  padding-top: 150px;
 }
 .welcome h2 {
   text-transform: uppercase;
   font-size: 20px;
 }
 .logo-img {
-  max-width: 300px;
+  max-width: 250px;
 }

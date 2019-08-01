@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/twitch';
+import { Col, Row } from 'reactstrap';
 import './style.css';
 
 class Twitch extends React.Component {
@@ -12,9 +13,17 @@ class Twitch extends React.Component {
       <div className="twitch">
         {this.props.livestreams.map(data => {
           return (
-            <div>
-              <p> {data.text}</p>
-            </div>
+            <Row>
+              <Col className="col-lg-12">
+                <a href={data.stream.channel.url} target="_blank">
+                  <img
+                    src={data.stream.preview.large}
+                    className="img-fluid video"
+                  />
+                </a>
+                {}
+              </Col>
+            </Row>
           );
         })}
       </div>
