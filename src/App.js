@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/library" component={UserLibrary} />
