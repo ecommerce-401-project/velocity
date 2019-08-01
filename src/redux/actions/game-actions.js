@@ -25,7 +25,6 @@ export const saveGame = (data, token) => {
       )
       .set('Authorization', `Bearer ${token}`)
       .then(res => {
-        console.log('WORKED')
         dispatch(checkSavedGames(token));
       })
       .catch(err => console.error(err));
@@ -66,3 +65,15 @@ const viewGame = game => ({
   type: 'GET_GAME',
   payload: game,
 });
+
+export const deleteSavedGame = (data, token) => {
+  return dispatch => {
+    superagent
+      .delete(`https://videogame-marketplace.herokuapp.com/library/${data._id}`)
+      .set('Authorization', `Bearer ${token}`)
+      .then(res => {
+        console.log('DELETED')
+      })
+      .catch(err => console.error(err));
+  };
+};

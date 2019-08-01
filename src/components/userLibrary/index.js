@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Featured from '../featured';
+
 import * as actions from '../../redux/actions/game-actions';
 import {
   Card,
@@ -10,6 +10,7 @@ import {
   CardSubtitle,
   Container,
   Row,
+  Button,
 } from 'reactstrap';
 import './style.css';
 import { Link } from 'react-router-dom';
@@ -24,6 +25,10 @@ class UserLibrary extends React.Component {
     return this.props.savedGames.some(game => {
       return game._id === data._id;
     });
+  }
+
+  handleDelete = (data) => {
+    this.props.deleteGame(data, this.props.user.token)
   }
 
   render() {
@@ -44,6 +49,7 @@ class UserLibrary extends React.Component {
                     <CardSubtitle className="text-left subtitle">
                       {data.creator}
                     </CardSubtitle>
+                    <Button onClick={() => this.handleDelete(data)}>Delete from library</Button>
                   </CardBody>
                 </Card>
               );
@@ -62,7 +68,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getGames: () => dispatch(actions.getAllGames()),
-  checkGames: (token) => dispatch(actions.checkSavedGames(token))
+  checkGames: (token) => dispatch(actions.checkSavedGames(token)),
+  deleteGame: (data, token) => dispatch(actions.deleteSavedGame(data, token))
 });
 
 export default connect(
