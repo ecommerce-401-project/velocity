@@ -21,7 +21,6 @@ const brandImg = {
 const buttontext = {
   fontSize: '13px',
   fontWeight: '700',
-  marginTop: '10px',
   textTransform: 'uppercase',
 };
 
@@ -78,8 +77,9 @@ class Navigation extends React.Component {
                   <Button
                     onClick={() => this.props.signOut()}
                     className="light-button"
+                    style={buttontext}
                   >
-                    <p style={buttontext}> Sign Out</p>
+                    SIGN OUT
                   </Button>
                 ) : (
                   <AuthModal />

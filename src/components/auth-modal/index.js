@@ -7,6 +7,12 @@ import { connect } from 'react-redux';
 
 import './style.css';
 
+const buttontext = {
+  fontSize: '13px',
+  fontWeight: '700',
+  textTransform: 'uppercase',
+};
+
 class AuthModal extends React.Component {
   constructor(props) {
     super(props);
@@ -29,18 +35,27 @@ class AuthModal extends React.Component {
     }));
   };
   render() {
- 
     return (
       <div>
-        <div className="subheading nav-link pointer" onClick={this.toggle}>
-         Sign in
+        <div
+          className="subheading nav-link pointer"
+          onClick={this.toggle}
+          style={buttontext}
+        >
+          Sign in
         </div>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalBody>{this.state.switch ? <SignIn toggle={this.toggle}/> : <SignUp toggle={this.toggle}/>}</ModalBody>
+          <ModalBody>
+            {this.state.switch ? (
+              <SignIn toggle={this.toggle} />
+            ) : (
+              <SignUp toggle={this.toggle} />
+            )}
+          </ModalBody>
 
           <div
             className="small text-center pointer"
@@ -54,7 +69,11 @@ class AuthModal extends React.Component {
             )}
           </div>
           <ModalFooter>
-            <Button className="dark-button" onClick={this.toggle}>
+            <Button
+              className="light-button"
+              style={buttontext}
+              onClick={this.toggle}
+            >
               Cancel
             </Button>
           </ModalFooter>
@@ -66,12 +85,9 @@ class AuthModal extends React.Component {
 const mapStateToProps = state => ({
   games: state.games,
   currentUser: state.currentUser,
-
 });
-
-
 
 export default connect(
   mapStateToProps,
-  null,
+  null
 )(AuthModal);
