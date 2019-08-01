@@ -17,7 +17,12 @@ import { Link } from 'react-router-dom';
 
 
 class UserLibrary extends React.Component {
+
   componentDidMount = () => {
+    this.props.checkGames(this.props.user.token);
+  };
+
+  componentDidUpdate = () => {
     this.props.checkGames(this.props.user.token);
   };
 

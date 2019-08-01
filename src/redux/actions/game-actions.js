@@ -18,7 +18,6 @@ const getAll = games => ({
 
 export const saveGame = (data, token) => {
   return dispatch => {
-    console.log('TOKEN', token);
     superagent
       .post(
         `https://videogame-marketplace.herokuapp.com/games/${data._id}/save`
