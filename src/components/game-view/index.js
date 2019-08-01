@@ -4,8 +4,6 @@ import * as actions from '../../redux/actions/game-actions';
 import './style.css';
 import {
   Container,
-  Row,
-  Button,
   Card,
   CardImg,
   CardBody,

@@ -1,10 +1,8 @@
 import React from 'react';
 import AuthModal from '../auth-modal';
-import logo from './logo.png'
+import logo from './v-logo-short.png';
 import * as actions from '../../redux/actions/user-actions';
-
 import { connect } from 'react-redux';
-
 import {
   Collapse,
   Navbar,
@@ -13,9 +11,19 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button
+  Button,
 } from 'reactstrap';
 import './style.css';
+
+const brandImg = {
+  maxWidth: '200px',
+};
+const buttontext = {
+  fontSize: '13px',
+  fontWeight: '700',
+  marginTop: '10px',
+  textTransform: 'uppercase',
+};
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -36,11 +44,14 @@ class Navigation extends React.Component {
 
     return (
       <div>
-        <Navbar expand="sm" className="navbar shadow" dark>
+        <Navbar expand="sm" className="navbar shadow fixed-top" dark>
           <NavbarBrand href="/" className="nav-link subheading">
-            <img src={logo} className='img-fluid mb-5' />
-
-            {' '}
+            <img
+              src={logo}
+              className="img-fluid"
+              alt="Velocity Games"
+              style={brandImg}
+            />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -62,8 +73,17 @@ class Navigation extends React.Component {
               </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
-              <NavItem >
-                {loggedIn ? <div className="subheading nav-link pointer" onClick={()=> this.props.signOut()}>Sign Out</div> : <AuthModal />}
+              <NavItem>
+                {loggedIn ? (
+                  <Button
+                    onClick={() => this.props.signOut()}
+                    className="light-button"
+                  >
+                    <p style={buttontext}> Sign Out</p>
+                  </Button>
+                ) : (
+                  <AuthModal />
+                )}
               </NavItem>
             </Nav>
           </Collapse>
@@ -78,12 +98,9 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   games: state.games,
   currentUser: state.currentUser,
-
 });
-
-
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Navigation);
