@@ -18,14 +18,12 @@ const getAll = games => ({
 
 export const saveGame = (data, token) => {
   return dispatch => {
-    console.log('TOKEN', token);
     superagent
       .post(
         `https://videogame-marketplace.herokuapp.com/games/${data._id}/save`
       )
       .set('Authorization', `Bearer ${token}`)
       .then(res => {
-        console.log('WORKED')
         dispatch(checkSavedGames(token));
       })
       .catch(err => console.error(err));
@@ -66,3 +64,15 @@ const viewGame = game => ({
   type: 'GET_GAME',
   payload: game,
 });
+
+export const deleteSavedGame = (data, token) => {
+  return dispatch => {
+    superagent
+      .delete(`https://videogame-marketplace.herokuapp.com/library/${data._id}`)
+      .set('Authorization', `Bearer ${token}`)
+      .then(res => {
+        console.log('DELETED')
+      })
+      .catch(err => console.error(err));
+  };
+};
