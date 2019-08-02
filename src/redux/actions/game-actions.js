@@ -71,7 +71,7 @@ export const deleteSavedGame = (data, token) => {
       .delete(`https://videogame-marketplace.herokuapp.com/library/${data._id}`)
       .set('Authorization', `Bearer ${token}`)
       .then(res => {
-        console.log('DELETED')
+        dispatch(checkSavedGames(token));
       })
       .catch(err => console.error(err));
   };
