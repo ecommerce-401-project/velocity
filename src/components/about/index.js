@@ -13,14 +13,6 @@ const About = () => {
     <div className="gradient paddingTop">
       <Container>
         <Row>
-          <Col>
-            <img
-              className="img-fluid group profile-img"
-              src="https://previews.123rf.com/images/stockbroker/stockbroker1111/stockbroker111100804/11210941-colleagues-in-business-meeting.jpg"
-            />
-          </Col>
-        </Row>
-        <Row>
           <Col />
         </Row>
         <Row>
@@ -69,14 +61,6 @@ const About = () => {
             GitHub: https://github.com/Kmons2000, 
             LinkedIn: https://www.linkedin.com/in/skylar-monahan2000/
             </Col>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <img
-              className="img-fluid group profile-img"
-              src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4494883.jpg"
-            />
           </Col>
         </Row>
       </Container>
